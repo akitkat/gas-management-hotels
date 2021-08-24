@@ -1,8 +1,10 @@
 import {
   RakutenTravelBathType,
+  RakutenTravelCreditCardItem,
   RakutenTravelHotelBasicInfoInterface,
   RakutenTravelHotelDetailInfoInterface,
   RakutenTravelHotelFacilitiesInfoInterface,
+  RakutenTravelHotelPolicyInfoInterface,
   RakutenTravelHotelRatingInfoInterface,
   RakutenTravelItem,
 } from './rakutenTravelHotelInterface';
@@ -80,5 +82,18 @@ export class RakutenTravelHotelFacilitiesInfo
     public aboutLeisure: string,
     public handicappedFacilities: RakutenTravelItem[],
     public linguisticLevel: string
+  ) {}
+}
+
+export class RakutenTravelHotelPolicyInfo
+  implements RakutenTravelHotelPolicyInfoInterface
+{
+  constructor(
+    public note: string,
+    public cancelPolicy: string,
+    public availableCreditCard: RakutenTravelCreditCardItem[],
+    public aboutCreditCardNote: string,
+    public aboutPointAdd: string,
+    public aboutMileageAdd: string
   ) {}
 }

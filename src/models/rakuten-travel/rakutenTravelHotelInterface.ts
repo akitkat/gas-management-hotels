@@ -6,6 +6,10 @@ export interface RakutenTravelBathType {
   bathType: string;
 }
 
+export interface RakutenTravelCreditCardItem {
+  card: string;
+}
+
 export interface RakutenTravelHotelBasicInfoInterface {
   hotelNo: number;
   hotelName: string;
@@ -64,4 +68,13 @@ export interface RakutenTravelHotelFacilitiesInfoInterface {
   aboutLeisure: string;
   handicappedFacilities: RakutenTravelItem[];
   linguisticLevel: string;
+}
+
+export interface RakutenTravelHotelPolicyInfoInterface {
+  note: string;
+  cancelPolicy: string;
+  availableCreditCard: RakutenTravelCreditCardItem[];
+  aboutCreditCardNote: string;
+  aboutPointAdd: string;
+  aboutMileageAdd: string;
 }
