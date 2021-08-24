@@ -1,9 +1,9 @@
-export interface sheetKeywordsInterface {
+export interface SheetKeywordsInterface {
   no: number;
   keyword: string;
 }
 
-export interface sheetDataInterface {
+export interface SheetDataInterface {
   hotelNo: number;
   hotelName: string;
   hotelInformationUrl: string;

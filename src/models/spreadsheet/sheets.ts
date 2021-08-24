@@ -1,10 +1,10 @@
-import { sheetDataInterface, sheetKeywordsInterface } from './sheetsInterface';
+import { SheetDataInterface, SheetKeywordsInterface } from './sheetsInterface';
 
-export class sheetKeywords implements sheetKeywordsInterface {
+export class SheetKeywords implements SheetKeywordsInterface {
   constructor(public no: number, public keyword: string) {}
 }
 
-export class sheetData implements sheetDataInterface {
+export class SheetData implements SheetDataInterface {
   constructor(
     public hotelNo: number,
     public hotelName: string,
