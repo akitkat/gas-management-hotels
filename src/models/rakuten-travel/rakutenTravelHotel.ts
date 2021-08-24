@@ -1,4 +1,7 @@
-import { RakutenTravelHotelBasicInfoInterface } from './rakutenTravelHotelInterface';
+import {
+  RakutenTravelHotelBasicInfoInterface,
+  RakutenTravelHotelRatingInfoInterface,
+} from './rakutenTravelHotelInterface';
 
 export class RakutenTravelHotelBasicInfo
   implements RakutenTravelHotelBasicInfoInterface
@@ -31,5 +34,18 @@ export class RakutenTravelHotelBasicInfo
     public reviewCount: number,
     public reviewAverage: number,
     public userReview: string
+  ) {}
+}
+
+export class RakutenTravelHotelRatingInfo
+  implements RakutenTravelHotelRatingInfoInterface
+{
+  constructor(
+    public serviceAverage: number,
+    public locationAverage: number,
+    public roomAverage: number,
+    public equipmentAverage: number,
+    public bathAverage: number,
+    public mealAverage: number
   ) {}
 }

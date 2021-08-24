@@ -27,3 +27,12 @@ export interface RakutenTravelHotelBasicInfoInterface {
   reviewAverage: number;
   userReview: string;
 }
+
+export interface RakutenTravelHotelRatingInfoInterface {
+  serviceAverage: number;
+  locationAverage: number;
+  roomAverage: number;
+  equipmentAverage: number;
+  bathAverage: number;
+  mealAverage: number;
+}
