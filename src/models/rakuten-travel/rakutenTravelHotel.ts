@@ -1,7 +1,10 @@
 import {
+  RakutenTravelBathType,
   RakutenTravelHotelBasicInfoInterface,
   RakutenTravelHotelDetailInfoInterface,
+  RakutenTravelHotelFacilitiesInfoInterface,
   RakutenTravelHotelRatingInfoInterface,
+  RakutenTravelItem,
 } from './rakutenTravelHotelInterface';
 
 export class RakutenTravelHotelBasicInfo
@@ -63,5 +66,19 @@ export class RakutenTravelHotelDetailInfo
     public checkinTime: string,
     public checkoutTime: string,
     public lastCheckinTime: string
+  ) {}
+}
+
+export class RakutenTravelHotelFacilitiesInfo
+  implements RakutenTravelHotelFacilitiesInfoInterface
+{
+  constructor(
+    public hotelRoomNum: number,
+    public roomFacilities: RakutenTravelItem[],
+    public hotelFacilities: RakutenTravelItem[],
+    public aboutBath: RakutenTravelBathType[],
+    public aboutLeisure: string,
+    public handicappedFacilities: RakutenTravelItem[],
+    public linguisticLevel: string
   ) {}
 }

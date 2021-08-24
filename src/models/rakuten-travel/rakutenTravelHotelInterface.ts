@@ -1,3 +1,11 @@
+export interface RakutenTravelItem {
+  item: string;
+}
+
+export interface RakutenTravelBathType {
+  bathType: string;
+}
+
 export interface RakutenTravelHotelBasicInfoInterface {
   hotelNo: number;
   hotelName: string;
@@ -46,4 +54,14 @@ export interface RakutenTravelHotelDetailInfoInterface {
   checkinTime: string;
   checkoutTime: string;
   lastCheckinTime: string;
+}
+
+export interface RakutenTravelHotelFacilitiesInfoInterface {
+  hotelRoomNum: number;
+  roomFacilities: RakutenTravelItem[];
+  hotelFacilities: RakutenTravelItem[];
+  aboutBath: RakutenTravelBathType[];
+  aboutLeisure: string;
+  handicappedFacilities: RakutenTravelItem[];
+  linguisticLevel: string;
 }
