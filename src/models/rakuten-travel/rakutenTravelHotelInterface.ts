@@ -36,3 +36,14 @@ export interface RakutenTravelHotelRatingInfoInterface {
   bathAverage: number;
   mealAverage: number;
 }
+
+export interface RakutenTravelHotelDetailInfoInterface {
+  reserveTelephoneNo: string;
+  middleClassCode: string;
+  smallClassCode: string;
+  areaName: string;
+  hotelClassCode: string;
+  checkinTime: string;
+  checkoutTime: string;
+  lastCheckinTime: string;
+}

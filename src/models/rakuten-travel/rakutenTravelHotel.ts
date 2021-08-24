@@ -1,5 +1,6 @@
 import {
   RakutenTravelHotelBasicInfoInterface,
+  RakutenTravelHotelDetailInfoInterface,
   RakutenTravelHotelRatingInfoInterface,
 } from './rakutenTravelHotelInterface';
 
@@ -47,5 +48,20 @@ export class RakutenTravelHotelRatingInfo
     public equipmentAverage: number,
     public bathAverage: number,
     public mealAverage: number
+  ) {}
+}
+
+export class RakutenTravelHotelDetailInfo
+  implements RakutenTravelHotelDetailInfoInterface
+{
+  constructor(
+    public reserveTelephoneNo: string,
+    public middleClassCode: string,
+    public smallClassCode: string,
+    public areaName: string,
+    public hotelClassCode: string,
+    public checkinTime: string,
+    public checkoutTime: string,
+    public lastCheckinTime: string
   ) {}
 }
