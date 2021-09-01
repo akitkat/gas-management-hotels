@@ -1,5 +1,6 @@
-import { chunk_, uniq_ } from './utils'
+import { chunk_, diff_, uniq_ } from './utils'
 import {
+  headerPublishedHotels,
   headers,
   necessaryBathAbouts,
   necessaryHotelFacilities,
@@ -8,10 +9,14 @@ import {
   sheetBathAbouts,
   sheetData,
   sheetHotelFacilities,
+  sheetNamePublishedHotelList,
   sheetRoomFacilities,
   spreadSheetId,
 } from './const'
 
+import { fetchAllByHotelNoList_ } from './api/rakuten-travel'
+import { fetchUsedHotelNo_ } from './fetch-contentful'
+import { keywordsLoadAll_ } from './spreadsheet/keywords'
 import { stringify } from 'query-string'
 
 const baseApiUrl = ScriptProperties.getProperty('BASE_API_URL')
@@ -33,20 +38,59 @@ export const fetchAllByHotelNos = () => {
     .result()
     .map((e) => e.keyword)
     .filter((e) => !!e)
-  let rows = []
-  chunk_(hotelNos, 15).forEach((nos) => {
-    fetchParameters.hotelNo = nos.join(',')
-    const url = `${baseApiUrl}?${stringify(fetchParameters)}`
-    const res = fetch_(url)
-    res.forEach((hotel) => {
-      const row = seek_(hotel)
-      console.log(row)
-      rows.push(row)
-    })
-  })
-
+  const rows = fetchAll_(hotelNos)
   rows.unshift(headers)
   bulkInsert_(rows)
+
+  // const hotelNos = keywordsLoadAll_()
+  // console.log(hotelNos)
+
+  // const res = fetchAllByHotelNoList_(hotelNos)
+  // console.log(res)
+}
+
+export const fetchAllPublishedHotels = () => {
+  const sql = SpreadSheetsSQL.open(spreadSheetId, sheetNamePublishedHotelList)
+  const existNos = sql
+    .select(['hotelNo'])
+    .filter('hotelNo > 0')
+    .result()
+    .map((e) => e.hotelNo)
+  const fetchNos = fetchUsedHotelNo_()
+  const targetNos = diff_(fetchNos, existNos)
+  if (targetNos.length < 1) {
+    return
+  }
+
+  const hotelList = fetchAll_(targetNos)
+  if (hotelList.length < 1) {
+    return
+  }
+
+  const rows = hotelList.map((hotel) => {
+    console.log(hotel)
+    return [
+      e.hotelNo,
+      e.hotelName,
+      e.hotelMinCharge ? e.hotelMinCharge : '-',
+      e.telephoneNo,
+      e.address1 + e.address2,
+      e.access,
+      e.hotelImageUrl,
+    ]
+  })
+
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(
+    sheetNamePublishedHotelList
+  )
+  sheet
+    .getRange(
+      sheet.getLastRow() + 1,
+      1,
+      rows.length,
+      headerPublishedHotels.length
+    )
+    .setValues(rows)
 }
 
 /**
@@ -75,6 +119,20 @@ export const fetchAllFacilitiesByHotelNos = () => {
       replaceIntoBathAbouts_(bathAbouts)
     })
   })
+}
+
+const fetchAll_ = (nos) => {
+  let rows = []
+  chunk_(nos, 15).forEach((n) => {
+    fetchParameters.hotelNo = n.join(',')
+    const url = `${baseApiUrl}?${stringify(fetchParameters)}`
+    const res = fetch_(url)
+    res.forEach((hotel) => {
+      const row = seek_(hotel)
+      rows.push(row)
+    })
+  })
+  return rows
 }
 
 const fetch_ = (url) => {

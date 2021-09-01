@@ -13,8 +13,6 @@ const config = {
     path: path.resolve(__dirname, "dist"),
   },
   plugins: [
-    // Add your plugins here
-    // Learn more about plugins from https://webpack.js.org/configuration/plugins/
     new GasPlugin()
   ],
   module: {
@@ -32,6 +30,9 @@ const config = {
       // Learn more about loaders from https://webpack.js.org/loaders/
     ],
   },
+  optimization:{
+    minimize: false
+  }
 };
 
 module.exports = () => {

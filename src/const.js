@@ -1,6 +1,7 @@
 export const sheetNameBathAbouts = 'bathAbouts'
 export const sheetNameData = 'data2'
 export const sheetNameHotelFacilities = 'hotelFacilities'
+export const sheetNamePublishedHotelList = 'publishedHotelList'
 export const sheetNameRoomFacilities = 'roomFacilities'
 export const spreadSheet = SpreadsheetApp.getActiveSpreadsheet()
 export const spreadSheetId = spreadSheet.getId()
@@ -123,4 +124,14 @@ export const headers = [
   'otherId',
   'catchCopy',
   'caption',
+]
+
+export const headerPublishedHotels = [
+  'hotelNo',
+  'name',
+  'price',
+  'tel',
+  'address',
+  'access',
+  'image',
 ]
