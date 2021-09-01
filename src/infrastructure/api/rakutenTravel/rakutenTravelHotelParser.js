@@ -4,9 +4,9 @@ import {
   RakutenTravelHotelFacilitiesInfo,
   RakutenTravelHotelPolicyInfo,
   RakutenTravelHotelRatingInfo,
-} from '../../../models/rakuten-travel/rakutenTravelHotel';
+} from '../../../models/rakutenTravel/rakutenTravelHotel';
 
-import { RakutenTravelHotel } from '../../../models/rakuten-travel/rakutenTravelHotel';
+import { RakutenTravelHotel } from '../../../models/rakutenTravel/rakutenTravelHotel';
 
 export const parseRakutenTravelHotel = (hotel) => {
   return new RakutenTravelHotel(
