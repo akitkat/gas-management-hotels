@@ -6,13 +6,13 @@ export default class RakutenTravelHotel extends BaseApi {
   limit = 15;
 
   constructor() {
-    super('RAKUTEN_TRAVEL_OBJ');
+    super('rakutenTravel');
   }
 
   fetchAllByHotelNoList(list) {
     let rows = [];
     chunk(list, this.limit).forEach((l) => {
-      this.parameters.hotelNo = l.join(',');
+      this.config.parameters.hotelNo = l.join(',');
       const res = this.fetch();
       rows = rows.concat(res.hotels);
     });

@@ -1,18 +1,17 @@
 import BaseSpreadSheet from './baseSpreadSheet';
-import { SheetKeywords } from '../../models/spreadsheet/sheets';
+import SheetKeywords from '../../models/spreadsheet/keywords';
 
-export default class SheetKeywordsSpread extends BaseSpreadSheet {
+export default class extends BaseSpreadSheet {
   constructor() {
     super('keywords');
   }
-  fetchAll() {
-    const res = super.selectAll();
-    if (res === undefined) {
-      return null;
-    }
 
-    return res.map((e) => {
-      return new SheetKeywords(e[0], e[1]);
-    });
+  fetchAll() {
+    return super
+      .selectAll()
+      .filter((e) => !!e[0] && !!e[1])
+      .map((e) => {
+        return new SheetKeywords(...e);
+      });
   }
 }

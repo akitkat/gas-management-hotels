@@ -1,25 +1,16 @@
+import config from '../../config/config';
 import { stringify } from 'query-string';
 
 export default class BaseApi {
-  baseUrl = '';
-  parameters = {};
-  propertyName;
+  config = {};
 
   constructor(propertyName) {
-    this.propertyName = propertyName;
-    const json = PropertiesService.getScriptProperties().getProperty(
-      this.propertyName
-    );
-    if (json !== null) {
-      const property = JSON.parse(json);
-      this.baseUrl = property.baseUrl;
-      this.parameters = property.baseParameters;
-    }
+    this.config = config['api'][propertyName];
   }
 
   fetch() {
-    const url = `${this.baseUrl}?${stringify(this.parameters)}`;
-    console.log("🚀 ~ file: baseApi.js ~ line 22 ~ BaseApi ~ fetch ~ url", url)
+    const url = `${this.config.baseUrl}?${stringify(this.config.parameters)}`;
+    console.log('🚀 ~ file: baseApi.js ~ line 22 ~ BaseApi ~ fetch ~ url', url);
     const res = UrlFetchApp.fetch(url).getContentText();
     return JSON.parse(res);
   }

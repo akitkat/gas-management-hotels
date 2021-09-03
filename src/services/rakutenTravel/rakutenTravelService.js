@@ -1,4 +1,4 @@
-import { SheetFetchedHotelData } from '../../models/spreadsheet/sheets';
+import SheetFetchedHotelData from '../../models/spreadsheet/fetchedHotelData';
 
 export const convertToSheetFetchedHotelData = (rakutenTravelHotel) => {
   const roomFacilities = rakutenTravelHotel.facilitiesInfo?.roomFacilities.map(

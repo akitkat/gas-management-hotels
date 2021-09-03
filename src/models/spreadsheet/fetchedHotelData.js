@@ -1,11 +1,4 @@
-export class SheetKeywords {
-  constructor(no, keyword) {
-    this.no = no;
-    this.keyword = keyword;
-  }
-}
-
-export class SheetFetchedHotelData {
+export default class SheetFetchedHotelData {
   constructor(
     hotelNo,
     hotelName,

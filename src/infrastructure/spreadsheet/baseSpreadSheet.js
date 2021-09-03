@@ -1,5 +1,3 @@
-import { SheetKeywords } from '../../models/spreadsheet/sheets';
-
 export default class BaseSpreadSheet {
   sheet;
   sheetName;
@@ -12,15 +10,9 @@ export default class BaseSpreadSheet {
   }
 
   selectAll() {
-    const res = this.sheet
-      .getRange(2, 1, this.sheet.getLastRow(), this.sheet.getLastColumn())
+    return this.sheet
+      .getRange(2, 1, this.sheet.getLastRow() - 1, this.sheet.getLastColumn())
       .getValues();
-
-    return res
-      .filter((e) => !!e[0] && !!e[1])
-      .map((e) => {
-        return new SheetKeywords(...e);
-      });
   }
 
   replceAll(data) {

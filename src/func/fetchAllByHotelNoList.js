@@ -1,14 +1,14 @@
 import ApiRakutenTravel from '../infrastructure/api/rakutenTravel/rakutenTravelHotel';
-import KeywordsSpreadSheet from '../infrastructure/spreadsheet/keywords';
-import SheetFetchedHotelData from '../infrastructure/spreadsheet/fetchedHotelData';
+import FetchedHotelData from '../infrastructure/spreadsheet/fetchedHotelData';
+import Keywords from '../infrastructure/spreadsheet/keywords';
 import { convertToSheetFetchedHotelData } from '../services/rakutenTravel/rakutenTravelService';
 
 export default () => {
-  const data = new KeywordsSpreadSheet().selectAll();
+  const data = new Keywords().fetchAll();
   const hotelNoList = data.map((e) => e.keyword);
   const hotelList = new ApiRakutenTravel().fetchAllByHotelNoList(hotelNoList);
   const sheetFetchedHotelDataList = hotelList.map((hotel) => {
     return convertToSheetFetchedHotelData(hotel);
   });
-  new SheetFetchedHotelData().replceAll(sheetFetchedHotelDataList);
+  new FetchedHotelData().replceAll(sheetFetchedHotelDataList);
 };
