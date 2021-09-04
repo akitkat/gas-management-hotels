@@ -43,8 +43,11 @@ export default class OtherSiteBaseApi extends BaseApi {
     }
   }
 
-  getUrl() {
-    const id = this.fetch();
+  getUrl(keyword) {
+    const id = this.fetchId(keyword);
+    if (id === 'NULL') {
+      return id;
+    }
     return this.config.pageUrl.replace('{__replace__}', id);
   }
 }

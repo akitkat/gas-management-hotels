@@ -9,8 +9,8 @@ export default class OtherSiteJ extends OtherSiteBaseApi {
     this.config.parameters[this.config.key] = id;
     const res = super.fetch();
     return {
-      catchCopy: res.yadList[0].hotelCatchCopy,
-      caption: res.yadList[0].hotelCaption,
+      catchCopy: res.yadList[0]?.hotelCatchCopy ? res.yadList[0].hotelCatchCopy : '',
+      caption: res.yadList[0]?.hotelCaption ? res.yadList[0].hotelCaption : '',
     };
   }
 }
