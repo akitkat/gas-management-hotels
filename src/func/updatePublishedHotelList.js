@@ -1,9 +1,9 @@
-import { difference, uniq } from 'lodash';
-
 import ApiContentfulPost from '../infrastructure/api/contentful/post';
 import ApiRakutenTravelHotel from '../infrastructure/api/rakutenTravel/rakutenTravelHotel';
 import SheetPublishedHotelList from '../infrastructure/spreadsheet/publishedHotelList';
 import { convertToSheetPublishedHotelList } from '../services/rakutenTravel/rakutenTravelService';
+import difference from 'lodash/difference';
+import uniq from 'lodash/uniq';
 
 export default () => {
   const posts = new ApiContentfulPost().fetchAll();

@@ -1,5 +1,5 @@
 import BaseApi from '../baseApi';
-import { chunk } from 'lodash';
+import chunk from 'lodash/chunk';
 import { parseRakutenTravelHotel } from './rakutenTravelHotelParser';
 
 export default class RakutenTravelHotel extends BaseApi {
