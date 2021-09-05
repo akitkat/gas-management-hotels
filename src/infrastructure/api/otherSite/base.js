@@ -9,10 +9,11 @@ export default class OtherSiteBaseApi extends BaseApi {
 
   fetchId(keyword) {
     try {
-      const parameters = {...config.api.g.parameters}
+      const parameters = { ...config.api.g.parameters };
       parameters.MT = keyword;
       parameters.Domain = this.config.domain;
       const url = `${config.api.g.baseUrl}?${stringify(parameters)}`;
+      console.log("🚀 ~ file: base.js ~ line 16 ~ OtherSiteBaseApi ~ fetchId ~ url", url)
       const res = UrlFetchApp.fetch(url).getContentText();
       const $ = Cheerio.load(res);
       const urls = $(config.api.g.selector)
@@ -24,6 +25,7 @@ export default class OtherSiteBaseApi extends BaseApi {
       }
 
       const matches = urls
+        .slice(0, 3) // 3個目まで見る.
         .map((url) => {
           const match = url.match(new RegExp(this.config.pattern));
           return match ? match[1] : '';

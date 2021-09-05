@@ -3,4 +3,8 @@ export default class SheetKeywords {
     this.no = no;
     this.keyword = keyword;
   }
+
+  toArray() {
+    return [this.no, this.keyword];
+  }
 }
