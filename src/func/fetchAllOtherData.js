@@ -10,11 +10,14 @@ export default () => {
     )}`;
 
     const j = new ApiJ();
-    hotel.otherId = j.fetchId(keyword);
+    const otherId = j.fetchId(keyword);
+    if (otherId !== 'NULL') {
+      const res = j.fetch(otherId);
+      hotel.otherId = otherId;
+      hotel.catchCopy = stripTags(res.catchCopy).trim();
+      hotel.caption = stripTags(res.caption).trim();
+    }
 
-    const res = j.fetch(hotel.otherId);
-    hotel.catchCopy = stripTags(res.catchCopy).trim();
-    hotel.caption = stripTags(res.caption).trim();
     return hotel;
   });
 
