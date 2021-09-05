@@ -1,6 +1,6 @@
 import OtherSiteBaseApi from './base';
 
-export default class OtherSiteJ extends OtherSiteBaseApi {
+export default class extends OtherSiteBaseApi {
   constructor() {
     super('i');
   }
