@@ -7,7 +7,7 @@ import { shrinkAddress } from '../lib/utils';
 export default () => {
   let i = 0;
   const data = new SheetPublishedHotelList().fetchAll().map((hotel) => {
-    if (4 < i) {
+    if (15 <= i) {
       return hotel;
     }
 
@@ -18,19 +18,21 @@ export default () => {
     if (hotel.jUrl === '') {
       const api = new ApiJ();
       hotel.jUrl = api.getUrl(keyword);
+      i++;
     }
 
     if (hotel.iUrl === '') {
       const api = new ApiI();
       hotel.iUrl = api.getUrl(keyword);
+      i++;
     }
 
     if (hotel.yUrl === '') {
       const api = new ApiY();
       hotel.yUrl = api.getUrl(keyword);
+      i++;
     }
 
-    i++;
     return hotel;
   });
 
