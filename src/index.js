@@ -4,6 +4,7 @@ import fetchAllByHotelKeywordList from './func/fetchAllByHotelKeywordList';
 import fetchAllByHotelNoList from './func/fetchAllByHotelNoList';
 import fetchAllOtherData from './func/fetchAllOtherData';
 import fetchAllOtherSiteUrl from './func/fetchAllOtherSiteUrl';
+import fetchHotelListByUrl from './func/fetchHotelListByUrl';
 import onOpen from './func/onOpen';
 import updatePublishedHotelList from './func/updatePublishedHotelList';
 
@@ -13,5 +14,6 @@ global.fetchAllByHotelKeywordList = () => fetchAllByHotelKeywordList();
 global.fetchAllByHotelNoList = () => fetchAllByHotelNoList();
 global.fetchAllOtherData = () => fetchAllOtherData();
 global.fetchAllOtherSiteUrl = () => fetchAllOtherSiteUrl();
+global.fetchHotelListByUrl = () => fetchHotelListByUrl();
 global.onOpen = (e) => onOpen(e);
 global.updatePublishedHotelList = () => updatePublishedHotelList();

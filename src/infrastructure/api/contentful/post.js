@@ -19,4 +19,31 @@ export default class extends BaseApi {
         return new Post(e.fields.body);
       });
   }
+
+  add(title, content) {
+    const url = `${this.config.baseUrl}/spaces/${this.config.spaceId}/environments/master/entries`;
+    var options = {
+      method: 'post',
+      contentType: 'application/json',
+      payload: JSON.stringify({
+        fields: {
+          title: {
+            ja: title,
+          },
+          body: {
+            ja: content,
+          },
+        },
+      }),
+      headers: {
+        'Authorization': `Bearer ${this.config.parameters.access_token}`,
+        'Content-Type': 'application/vnd.contentful.management.v1+json',
+        'X-Contentful-Content-Type': 'post',
+      },
+    };
+
+    const res = UrlFetchApp.fetch(url, options);
+
+    return JSON.parse(res);
+  }
 }
