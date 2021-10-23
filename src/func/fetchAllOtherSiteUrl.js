@@ -5,7 +5,12 @@ import SheetPublishedHotelList from '../infrastructure/spreadsheet/publishedHote
 import { shrinkAddress } from '../lib/utils';
 
 export default () => {
+  let i = 0;
   const data = new SheetPublishedHotelList().fetchAll().map((hotel) => {
+    if (9 < i) {
+      return hotel;
+    }
+
     const keyword = `${hotel.hotelName} ${shrinkAddress(
       hotel.address1 + hotel.address2
     )}`;
@@ -25,6 +30,7 @@ export default () => {
       hotel.yUrl = api.getUrl(keyword);
     }
 
+    i++;
     return hotel;
   });
 
