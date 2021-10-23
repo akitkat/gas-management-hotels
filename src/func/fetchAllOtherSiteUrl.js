@@ -7,7 +7,7 @@ import { shrinkAddress } from '../lib/utils';
 export default () => {
   let i = 0;
   const data = new SheetPublishedHotelList().fetchAll().map((hotel) => {
-    if (9 < i) {
+    if (4 < i) {
       return hotel;
     }
 
