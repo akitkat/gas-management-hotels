@@ -11,7 +11,7 @@ export default () => {
 
   let publishedHotelNoList = [];
   posts.forEach((e) => {
-    const tags = (e.body.match(regex) ?? []).filter((e) => !!e).flat();
+    const tags = (e.body.ja.match(regex) ?? []).filter((e) => !!e).flat();
     if (!tags) {
       return;
     }
