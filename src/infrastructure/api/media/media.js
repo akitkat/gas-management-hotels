@@ -6,24 +6,41 @@ export default class extends BaseApi {
     super('media');
   }
 
+  $ = ''
+  site = {}
+
   fetchHotelListByUrl(url) {
     const host = url.match(/^https?:\/{2,}(.*?)(?:\/|\?|#|$)/)[1];
-    const site = this.config.sites?.[host];
-    if (!site) {
+    this.site = this.config.sites?.[host];
+    if (!this.site) {
       return false;
     }
 
-    const res = UrlFetchApp.fetch(url).getContentText();
-    const $ = Cheerio.load(res);
+    let content = UrlFetchApp.fetch(url).getContentText();
+    this.$ = Cheerio.load(content);
 
-    if (site.type == 'hotelNo') {
-      const hotelList = $(site.selector)
-        .map((i, v) => $(v).attr('href'))
-        .get()
-        .filter((url) => url.includes('rakuten'))
-        .map((url) => url.match(new RegExp(site.match))?.[1])
-        .filter((e) => !!e);
-      return new MediaContents($('title').text(), 'hotelNo', hotelList);
+    let hotelList = []
+    if (this.site.type == 'hotelNo') {
+      hotelList = this.seekHotelNoList();
+
+      let nextUrl = this.$('link[rel="next"]').attr('href')
+      while (nextUrl !== undefined) {
+        content = UrlFetchApp.fetch(nextUrl).getContentText()
+        this.$ = Cheerio.load(content);
+        hotelList = [...hotelList, ...this.seekHotelNoList()]
+        nextUrl = this.$('link[rel="next"]').attr('href')
+        Utilities.sleep(3000);
+      }
+      return new MediaContents(`${this.$('title').text()} ${hotelList.length}`, 'hotelNo', hotelList);
     }
+  }
+
+  seekHotelNoList() {
+    return this.$(this.site.selector)
+      .map((i, v) => this.$(v).attr('href'))
+      .get()
+      .filter((url) => url.includes('rakuten'))
+      .map((url) => url.match(new RegExp(this.site.match))?.[1])
+      .filter((e) => !!e);
   }
 }
