@@ -53,6 +53,7 @@ export default () => {
     .getValue()
     .replaceAll("'", '"')
     .replaceAll("'", '"')
+    .replaceAll("【】！", '')
     .replaceAll('。！', '。');
 
   const posts = new ApiContentfulPost().add(title, content);

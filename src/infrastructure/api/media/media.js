@@ -21,8 +21,9 @@ export default class extends BaseApi {
         .map((i, v) => $(v).attr('href'))
         .get()
         .filter((url) => url.includes('rakuten'))
-        .map((url) => url.match(new RegExp(site.match))[1]);
-        return new MediaContents($('title').text(), 'hotelNo', hotelList);
+        .map((url) => url.match(new RegExp(site.match))?.[1])
+        .filter((e) => !!e);
+      return new MediaContents($('title').text(), 'hotelNo', hotelList);
     }
   }
 }
