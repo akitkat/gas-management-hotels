@@ -39,7 +39,7 @@ export default class extends BaseApi {
     return this.$(this.site.selector)
       .map((i, v) => this.$(v).attr('href'))
       .get()
-      .filter((url) => url.includes('rakuten'))
+      .filter((url) => url.includes(this.site.filter))
       .map((url) => url.match(new RegExp(this.site.match))?.[1])
       .filter((e) => !!e);
   }

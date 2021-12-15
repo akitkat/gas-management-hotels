@@ -14,8 +14,8 @@ export default class {
   ) {
     this.hotelNo = hotelNo;
     this.hotelName = hotelName;
-    this.price = price;
-    this.tel = tel;
+    this.price = String(price);
+    this.tel = String(tel);
     this.address = address;
     this.access = access;
     this.image = image;
