@@ -18,7 +18,7 @@ export default () => {
     }
 
     const contents = new ApiMedia().fetchHotelListByUrl(site.url);
-    if (contents.list.length < 1) {
+    if (contents.list.length < 4) {
       site.flg = 9;
       return site;
     }
