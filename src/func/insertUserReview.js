@@ -24,7 +24,7 @@ export default () => {
           return hotel;
         }
 
-        hotel.userReview = hotelList[hotel.hotelNo].userReview === '' ? '-' : hotelList[hotel.hotelNo].userReview;
+        hotel.userReview = hotelList[hotel.hotelNo].userReview ?? '-';
         return hotel;
       });
 
