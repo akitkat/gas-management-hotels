@@ -7,6 +7,7 @@ export default class {
     address,
     access,
     image,
+    userReview,
     rUrl,
     jUrl,
     iUrl,
@@ -19,6 +20,7 @@ export default class {
     this.address = address;
     this.access = access;
     this.image = image;
+    this.userReview = userReview;
     this.rUrl = rUrl;
     this.jUrl = jUrl;
     this.iUrl = iUrl;
@@ -34,6 +36,7 @@ export default class {
       this.address,
       this.access,
       this.image,
+      this.userReview,
       this.rUrl,
       this.jUrl,
       this.iUrl,

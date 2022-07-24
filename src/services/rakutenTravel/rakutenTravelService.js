@@ -101,6 +101,7 @@ export const convertToSheetPublishedHotelList = (rakutenTravelHotel) => {
     rakutenTravelHotel.basicInfo?.address1 + rakutenTravelHotel.basicInfo?.address2,
     rakutenTravelHotel.basicInfo?.access,
     rakutenTravelHotel.basicInfo?.hotelImageUrl,
+    rakutenTravelHotel.basicInfo?.userReview,
     `https://hb.afl.rakuten.co.jp/hgc/g0190dd6.uc73i72f.g0190dd6.uc73jb24/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2FHOTEL%2F${rakutenTravelHotel.basicInfo?.hotelNo}`,
     '',
     '',
