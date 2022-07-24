@@ -21,5 +21,5 @@ export default () => {
     return hotel;
   });
 
-  new SheetFetchedHotelData().replceAll(data);
+  new SheetFetchedHotelData().replaceAll(data);
 };

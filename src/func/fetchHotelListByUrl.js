@@ -29,14 +29,14 @@ export default () => {
     const keywords = contents.list.map((hotel) => {
       return new SheetKeywords('=row()-1', hotel);
     });
-    new Keywords().replceAll(keywords);
+    new Keywords().replaceAll(keywords);
     isFetched = true;
 
     site.flg = 1;
     return site;
   });
 
-  new SheetArticleList().replceAll(data);
+  new SheetArticleList().replaceAll(data);
 
   if (isFetched) {
     if (type == 'hotelNo') {

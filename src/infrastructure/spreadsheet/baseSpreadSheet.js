@@ -19,7 +19,7 @@ export default class BaseSpreadSheet {
       .getValues();
   }
 
-  replceAll(data) {
+  replaceAll(data) {
     this.clearExceptHeader();
 
     const rows = data.map((e) => {

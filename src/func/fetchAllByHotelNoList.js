@@ -10,5 +10,5 @@ export default () => {
   const sheetFetchedHotelDataList = hotelList.map((hotel) => {
     return convertToSheetFetchedHotelData(hotel);
   });
-  new FetchedHotelData().replceAll(sheetFetchedHotelDataList);
+  new FetchedHotelData().replaceAll(sheetFetchedHotelDataList);
 };

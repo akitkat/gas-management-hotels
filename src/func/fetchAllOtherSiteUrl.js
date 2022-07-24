@@ -36,5 +36,5 @@ export default () => {
     return hotel;
   });
 
-  new SheetPublishedHotelList().replceAll(data);
+  new SheetPublishedHotelList().replaceAll(data);
 };

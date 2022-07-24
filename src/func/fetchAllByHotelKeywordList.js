@@ -12,7 +12,7 @@ export default () => {
     })
     .filter((e) => e.keyword !== 'NULL');
 
-  new Keywords().replceAll(SheetKeywordsList);
+  new Keywords().replaceAll(SheetKeywordsList);
 
   fetchAllByHotelNoList();
 };
