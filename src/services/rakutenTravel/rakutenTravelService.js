@@ -86,7 +86,7 @@ export const convertToSheetFetchedHotelData = (rakutenTravelHotel) => {
     bathAbouts?.includes('家族風呂'),
     bathAbouts?.includes('天然温泉'),
     bathAbouts?.includes('岩盤浴'),
-    '',
+    '=iferror(VLOOKUP(INDIRECT("A"&ROW()),idMap!$A$2:C,3,false),"")',
     '',
     ''
   );
