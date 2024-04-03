@@ -10,7 +10,10 @@ export default () => {
     )}`;
 
     const j = new ApiJ();
-    const otherId = j.fetchId(keyword);
+    let otherId = hotel.otherId
+    if (otherId.length === 0) {
+      otherId = j.fetchId(keyword);
+    }
     if (otherId !== 'NULL') {
       const res = j.fetch(otherId);
       hotel.otherId = otherId;
