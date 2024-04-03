@@ -17,16 +17,27 @@ export default () => {
       return site;
     }
 
-    const contents = new ApiMedia().fetchHotelListByUrl(site.url);
-    if (contents.list.length < 4) {
-      site.flg = 9;
-      return site;
+    let list;
+    if (0 < site.url.length) {
+      const contents = new ApiMedia().fetchHotelListByUrl(site.url);
+      if (contents.list.length < 4) {
+        site.flg = 9;
+        return site;
+      }
+
+      title = contents.title;
+      type = contents.type;
+      list = contents.list;
+      if (site.url.includes('rakuten')) {
+        title = site.url;
+      }
+    } else {
+      list = site.ids.split(',')
+      title = site.title
+      type = 'hotelNo';
     }
 
-    type = contents.type;
-    title = contents.title;
-
-    const keywords = contents.list.map((hotel) => {
+    const keywords = list.map((hotel) => {
       return new SheetKeywords('=row()-1', hotel);
     });
     new Keywords().replaceAll(keywords);
